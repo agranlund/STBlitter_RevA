@@ -1,0 +1,63 @@
+Name     STBlitter ;
+PartNo   00 ;
+Date     2019-09-03 ;
+Revision 01 ;
+Designer Anders Granlund ;
+Company  HappyDaze ;
+Assembly None ;
+Location  ;
+Device   g16v8 ;
+
+/*
+ A23     I [ 1     20 ] VCC 
+ A22     I [ 2     19 ] T*    RCEI
+ A21     I [ 3     18 ] T     RCEO
+ A20     I [ 4     17 ] T     DTACK
+ A19     I [ 5     16 ] T     --IDE_WR
+ A18     I [ 6     15 ] T     --IDE_RD
+ A17     I [ 7     14 ] T     --IDE_CS1
+ A16     I [ 8     13 ] T     --IDE_CS0
+ A5      I [ 9     12 ] T*    RW
+       GND [ 10    11 ] I     AS
+
+*/
+
+
+/************ Inputs ************/
+
+pin 1 = A23;
+pin 2 = A22;
+pin 3 = A21;
+pin 4 = A20;
+pin 5 = A19;
+pin 6 = A18;
+pin 7 = A17;
+pin 8 = A16;
+pin 9 = A5;
+pin 11 = AS;
+pin 12 = RW;
+pin 19 = RCEI; 
+
+/************ Outputs ************/
+/*
+pin 13 = !IDE_CS0;
+pin 14 = !IDE_CS1;
+pin 15 = !IDE_RD;
+pin 16 = !IDE_WR;
+*/
+pin 17 = DTACK;
+pin 18 = !RCEO;
+
+/************ Logic ************/
+
+DTACK = (!AS & A23 & A22 & A21 & !A20 & !A19 & !A18 & RW);
+
+RCEO = (!AS & A23 & A22 & A21 & !A20 & !A19 & !A18 & RW) # !RCEI;
+
+/*
+IDE_CS0 = (A23 & A22 & A21 & A20 & !A19 & !A18 & !A17 & !A16 & !A5);
+IDE_CS1 = (A23 & A22 & A21 & A20 & !A19 & !A18 & !A17 & !A16 & A5);
+IDE_RD = (!AS & A23 & A22 & A21 & A20 & !A19 & !A18 & !A17 & !A16 & RW);
+IDE_WR = (!AS & A23 & A22 & A21 & A20 & !A19 & !A18 & !A17 & !A16 & !RW);
+*/
+
