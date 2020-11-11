@@ -81,15 +81,11 @@ Installation:
 
 - Wire from STBlitter-RCEO to CE for the ROMS.
 
-In My case:
-RCEI to pin 8 of U68 on Atari motherboard. The pin on U68 was cut so that it no longer connects to the Atari motherboard.
-RCEO to the CE-1M solder jumper on Atari motherboard
 
-Installation might be harder or easier if you are using a 3rd party 2chip TOS upgrade board.
-Check with the supplier of your board where you can hijack and replace the CE signal.
+I am using a self made Tos ROM board for holding the EEPROMS:
+https://github.com/agranlund/STRom
 
-I do not have one so I couldn't tell for sure, but it looks like the STFM Dual-Tos board from Exxos would make
-installation very easy as it appear to have a pin for an external CE signal.
+
 
 
 
